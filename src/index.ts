@@ -12,7 +12,6 @@ function buildExpressApp() {
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(logger('dev'))
   app.use('/', express.static(path.join(".", 'public'), { redirect: false }))
-  app.get('*', (rqe, res) => res.sendFile(path.resolve(path.join(__dirname, 'public/index.html'))))
   return app
 }
 
