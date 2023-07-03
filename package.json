@@ -1,0 +1,14 @@
+{
+  "name": "voting.local",
+  "version": "0.0.1",
+  "description": "simplest possible web app for doing ranked choice voting among multiple participants in the same network. NOT FOR OPEN NETWORK USAGE.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tatiana talavera",
+  "license": "GPL2",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
