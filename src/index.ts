@@ -4,7 +4,7 @@ import logger from "morgan"
 import path from "path"
 import chalk from "chalk"
 import http from "http"
-
+import { postPoll, getAllPolls, getPollbyID, postRanking, addOption } from "./endpoints/polls.js"
 function buildExpressApp() {
   let app = express()
 
@@ -12,6 +12,11 @@ function buildExpressApp() {
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(logger('dev'))
   app.use('/', express.static(path.join(".", 'public'), { redirect: false }))
+  app.post('/polls', postPoll)
+  app.get('/polls', getAllPolls)
+  app.get('/pollID', getPollbyID)
+  app.post('/ranking', postRanking)
+  app.patch('/poll', addOption)
   return app
 }
 
