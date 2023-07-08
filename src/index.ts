@@ -4,12 +4,15 @@ import logger from "morgan"
 import path from "path"
 import chalk from "chalk"
 import http from "http"
+import cors from "cors"
+
 import { postPoll, getAllPolls, getPollbyID, postRanking, addOption } from "./endpoints/polls.js"
 function buildExpressApp() {
   let app = express()
-
+  
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: false }))
+  app.use(cors());
   app.use(logger('dev'))
   app.use('/', express.static(path.join(".", 'public'), { redirect: false }))
   app.post('/polls', postPoll)
