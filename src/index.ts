@@ -4,7 +4,12 @@ import logger from "morgan"
 import path from "path"
 import chalk from "chalk"
 import http from "http"
-import cors from "cors"
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
+// import cors from "cors"
 
 import { postPoll, getAllPolls, getPollbyID, postRanking, addOption } from "./endpoints/polls.js"
 function buildExpressApp() {
@@ -12,9 +17,9 @@ function buildExpressApp() {
   
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: false }))
-  app.use(cors());
+  // app.use(cors());
   app.use(logger('dev'))
-  app.use('/', express.static(path.join(".", 'public'), { redirect: false }))
+  app.use('/', express.static(path.join(__dirname, '../public'), { redirect: true }))
   app.post('/polls', postPoll)
   app.get('/polls', getAllPolls)
   app.post('/pollID', getPollbyID)
