@@ -17,9 +17,9 @@ function buildExpressApp() {
   app.use('/', express.static(path.join(".", 'public'), { redirect: false }))
   app.post('/polls', postPoll)
   app.get('/polls', getAllPolls)
-  app.get('/pollID', getPollbyID)
+  app.post('/pollID', getPollbyID)
   app.post('/ranking', postRanking)
-  app.patch('/poll', addOption)
+  app.patch('/polls', addOption)
   return app
 }
 
