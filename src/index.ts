@@ -19,12 +19,13 @@ function buildExpressApp() {
   app.use(bodyParser.urlencoded({ extended: false }))
   // app.use(cors());
   app.use(logger('dev'))
-  app.use('/', express.static(path.join(__dirname, '../public'), { redirect: true }))
   app.post('/polls', postPoll)
   app.get('/polls', getAllPolls)
   app.post('/pollID', getPollbyID)
   app.post('/ranking', postRanking)
   app.patch('/polls', addOption)
+  app.use(express.static(path.join(__dirname, '../public'), { redirect: false }))
+  app.use('*', express.static(path.join(__dirname, '../public'), { redirect: true }))
   return app
 }
 
